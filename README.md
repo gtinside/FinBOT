@@ -1,5 +1,5 @@
 > [!WARNING]
-> This project is under active development. Requirements and code are subject to change and may be updated or modified as needed."
+> This project is under active development. Requirements and code are subject to change and may be updated or modified as needed.
 
 
 # FinBOT: AI-Powered Financial Data Platform

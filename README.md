@@ -1,5 +1,16 @@
-# FinDAP
-A financial data aggregation and enrichment platform that integrates structured and unstructured financial data sources, applies data validation, cleaning, and normalization techniques, and delivers a real-time, queryable dataset for analysts, researchers, or quant developers.
+> [!WARNING]
+> This project is under active development. Requirements and code are subject to change and may be updated or modified as needed."
+
+
+# FinBOT: AI-Powered Financial Data Platform
+FinBot is an innovative financial data platform that leverages natural language processing (NLP) to provide users with seamless access to a wide array of financial data through a chatbot interface. Designed for analysts, researchers, and quant developers, FinBot simplifies the way users interact with complex datasets by allowing them to ask questions and retrieve data in real-time, using everyday language.
+
+### Key Features:
+- **NLP-Powered Data Queries:** Users can ask natural language questions like "What was Apple's stock price on October 22, 2024?" or "Show me the top 5 companies by market cap" to instantly get accurate and real-time data.
+- **Access to Multiple Data Sources:** FinBot integrates structured and unstructured financial data sources, such as stock prices, SEC filings, market news, and social media sentiment, offering a comprehensive view for decision-making.
+- **Data Enrichment and Analysis:** The platform provides enriched datasets by cleaning, validating, and normalizing data, allowing users to focus on insights rather than data wrangling.
+- **Real-Time Alerts:** Users can set real-time alerts for significant events like earnings reports, filings, or price movements, and be notified instantly through the chatbot.
+- **Customizable Data Outputs:** FinBot can deliver data in multiple formats, including CSV, JSON, or even custom backtesting formats, tailored to user needs.
 
 ## Types of Data
 1. Market Data:

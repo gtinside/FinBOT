@@ -1,4 +1,4 @@
 polygon-api-client
 python-dotenv
-llama-agents 
-llama-index-agent-openai
+autogen-agentchat
+fastapi

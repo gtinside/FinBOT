@@ -4,3 +4,4 @@ autogen-agentchat
 loguru
 pyautogen
 fastapi[standard]
+autogen-agentchat[anthropic]

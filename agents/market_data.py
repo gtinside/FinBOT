@@ -4,7 +4,7 @@ from integration.polygon_connector import PolygonAPIConnector
 from dotenv import load_dotenv
 
 load_dotenv()
-llm_config = {"model": "claude-3-sonnet-20240229", "api_key": os.environ["ANTHROPIC_API_KEY"]}
+llm_config = {"model": "claude-3-sonnet-20240229", "api_key": os.environ["ANTHROPIC_API_KEY"], "api_type": "anthropic"}
 polygon_api = PolygonAPIConnector()
 
 stock_price_agent = autogen.AssistantAgent(
@@ -26,7 +26,8 @@ user_proxy_agent = autogen.UserProxyAgent(
 )
 
 market_data_coordinator = autogen.GroupChat(
-    agents=[user_proxy_agent, stock_price_agent]
+    agents=[user_proxy_agent, stock_price_agent],
+    messages=[]
 )
 
 

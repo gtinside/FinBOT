@@ -8,10 +8,5 @@ class PolygonAPIConnector:
     def __init__(self) -> None:
         self.client = RESTClient()
 
-    def get_data(self):
-        data = self.client.get_daily_open_close_agg(ticker="AAPL", date="2024-10-22")
-        print(data)
-
-
-load_dotenv()
-PolygonAPIConnector().get_data()
+    def get_data(self, ticker, date):
+        return self.client.get_daily_open_close_agg(ticker=ticker, date=date)

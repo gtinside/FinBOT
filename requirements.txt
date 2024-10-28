@@ -1,4 +1,6 @@
 polygon-api-client
 python-dotenv
 autogen-agentchat
-fastapi
+loguru
+pyautogen
+fastapi[standard]

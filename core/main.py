@@ -1,7 +1,7 @@
 import autogen
 from loguru import logger
 from fastapi import FastAPI
-from agents.market_data import market_data_coordinator, user_proxy_agent
+from agents.market_data import market_data_coordinator, user_proxy_agent, stock_price_agent
 
 group_chat_manager = autogen.GroupChatManager(
     groupchat=market_data_coordinator

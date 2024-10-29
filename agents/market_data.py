@@ -9,7 +9,7 @@ polygon_api = PolygonAPIConnector()
 
 stock_price_agent = autogen.AssistantAgent(
     name="StockPriceAgent",
-    system_message="You are a stock price agent and can fetch stock price for a ticker for any given date",
+   system_message="""You are a stock price agent. Your task is to fetch historical stock prices by invoking the `get_stock_price` function when provided with a ticker symbol and date. Call `get_stock_price(ticker, date)` directly whenever a user asks for a stock price.""",
     llm_config=llm_config,
 )
 
@@ -30,33 +30,6 @@ market_data_coordinator = autogen.GroupChat(
     messages=[]
 )
 
-
-
-
-class MarketDataCoordinator:
-    def __init__(self):
-        pass
-
-class StockPriceAgent:
-    def __init__(self) -> None:
-        pass
-
-class HighFrequencyTradingAgent:
-    def __init__(self) -> None:
-        pass
-
-class VolumeAnalysisAgent:
-    def __init__(self) -> None:
-        pass
-
-class OrderBookAgent:
-    def __init__(self) -> None:
-        pass
-
-class MarketIndexAgent:
-    def __init__(self) -> None:
-        pass
-
-class OptionsDataAgent:
-    def __init__(self) -> None:
-        pass
+group_chat_manager = autogen.GroupChatManager(
+    groupchat=market_data_coordinator
+)

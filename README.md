@@ -15,7 +15,6 @@ FinBot is an innovative financial data platform that leverages natural language 
 ## Types of Data
 1. Market Data:
     - Stock Prices: Daily close, open, high, low prices.
-    - Tick Data: Trade-by-trade records with timestamps, useful for high-frequency trading.
     - Volume Data: Number of shares or contracts traded.
     - Order Book Data: Bid-ask prices and order quantities.
     - Market Indices: Aggregate indices such as the S&P 500, NASDAQ.

@@ -24,7 +24,7 @@ user_proxy_agent = autogen.UserProxyAgent(
 market_data_coordinator = autogen.GroupChat(
     agents=[user_proxy_agent, stock_price_agent],
     messages=[],
-    max_round=500,
+    max_round=3,
     speaker_selection_method="round_robin",
     enable_clear_history=True,
 )
@@ -37,4 +37,9 @@ group_chat_manager = autogen.GroupChatManager(
 @stock_price_agent.register_for_llm(description="Function that return current price for a ticker and date")
 def get_data(ticker="AAPL", date="2024-10-12"):
     return polygon_api.get_data(ticker, date)
+
+@user_proxy_agent.register_for_execution()
+@stock_price_agent.register_for_llm(description="Function that return volume data for a given ticker and a date range")
+def get_volume_data(ticker='AAPL', start_date="2023-01-01", end_date="2023-10-30"):
+    return polygon_api.get_volume_data(ticker=ticker, from_date=start_date, to_date=end_date)
 

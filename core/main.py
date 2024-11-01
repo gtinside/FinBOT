@@ -12,4 +12,5 @@ app = FastAPI()
 def send_message(message: str):
     logger.info("Message Received {}", message)
     response = user_proxy_agent.initiate_chat(group_chat_manager, message=message)
+    logger.info("Response Received: {}", response)
     return response

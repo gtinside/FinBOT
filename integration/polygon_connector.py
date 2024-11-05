@@ -42,7 +42,7 @@ class PolygonAPIConnector:
         Example:
         --------
         ```python
-        connector.get_data("AAPL", "2024-11-01")
+          connector.get_data("AAPL", "2024-11-01")
         ```
         """
         return str(self.client.get_daily_open_close_agg(ticker=ticker, date=date))
@@ -62,8 +62,7 @@ class PolygonAPIConnector:
         
         Returns:
         --------
-        str
-            A string representation of the aggregated volume data retrieved from the API, including 
+        str: A string representation of the aggregated volume data retrieved from the API, including 
             daily trading volumes for each day in the specified range.
         
         Example:

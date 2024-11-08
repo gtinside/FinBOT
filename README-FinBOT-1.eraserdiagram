@@ -1,0 +1,35 @@
+cloud-architecture-diagram
+
+title FinBOT
+
+Frontend [icon: message-circle] {
+  Chat Interface [icon: message-circle]
+}
+
+Backend [icon: server] {
+  Layer 1 [icon: server, label: "API Layer"] {
+    User Query Service [icon: globe]
+  }
+  Layer 2 [icon: database, label: "Data Layer"] {
+    Data Processing [icon: cpu]
+  }
+  ETL Layer [icon:layers]
+}
+
+Data Storage [icon: database] {
+  Real-time Financial Data [icon: bar-chart]
+  Historical Financial Data [icon: archive]
+}
+External Source 1 [icon:cloud]
+External Source 2 [icon:cloud]
+
+
+// Connections
+Chat Interface > User Query Service
+User Query Service > Data Processing
+Data Processing > Real-time Financial Data
+Data Processing > Historical Financial Data
+External Source 1 > ETL Layer
+External Source 2 > ETL Layer
+ETL Layer > Data Processing
+

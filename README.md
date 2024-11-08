@@ -34,12 +34,9 @@ FinBot is an innovative financial data platform that leverages natural language 
     - Interest Rates: Treasury yields, Fed funds rate.
     - Inflation Rates: CPI (Consumer Price Index), PPI (Producer Price Index).
     - Economic Indicators: GDP growth, unemployment rates, PMI (Purchasing Managers’ Index).
-## System Architecture
- [﻿View on canvas](https://app.eraser.io/workspace/cw8qIpoQ11eLn0LkpTla?elements=haTW7ad5PISlkozk1RYHKQ) 
-
 
 <!-- eraser-additional-content -->
-## Diagrams
+## System Architecture
 <!-- eraser-additional-files -->
 <a href="/README-FinBOT-1.eraserdiagram" data-element-id="uX6l4CRAWcZ4hrTwH_DJP"><img src="/.eraser/cw8qIpoQ11eLn0LkpTla___SR7BTmeEhFeSBhI5mbknU0jkoKK2___---diagram----fdac31668082e999123f6182b2a10176-FinBOT.png" alt="" data-element-id="uX6l4CRAWcZ4hrTwH_DJP" /></a>
 <!-- end-eraser-additional-files -->

@@ -40,3 +40,12 @@ FinBot is an innovative financial data platform that leverages natural language 
 <!-- end-eraser-additional-files -->
 <!-- end-eraser-additional-content -->
 <!--- Eraser file: https://app.eraser.io/workspace/cw8qIpoQ11eLn0LkpTla --->
+
+## Local Setup
+1. Set ```OPENAI_API_KEY``` env variable 
+2. Run timescaledb in a continer ```docker run -d --name market-data-db -p 5432:5432 -e POSTGRES_PASSWORD=password timescale/timescaledb:latest-pg16```
+3. Run Apache Kafka in a container ```docker run -d --name broker apache/kafka:latest```
+4. Create a topic in Kafka Broker 
+    -   ```docker exec --workdir /opt/kafka/bin/ -it broker sh```
+    - ```./kafka-topics.sh --bootstrap-server localhost:9092 --create --topic quotes-data```
+5. Start the producer

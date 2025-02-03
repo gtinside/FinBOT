@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from dotenv import load_dotenv
 from loguru import logger
-from integration.fuzzy_data_connector import FuzzyDataConnector
+from producer.data_generator import data_producer_coordinator
 
 
 load_dotenv()
-FuzzyDataConnector().get_quote_data()
+data_producer_coordinator()

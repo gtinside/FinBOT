@@ -1,6 +1,9 @@
 import time
 import random
+from loguru import logger
 from typing import List
+from kafka import KafkaProducer
+from kafka.errors import KafkaError
 from integration.fuzzy_data_connector import FuzzyDataConnector
 from model.quotes import MarketQuote, TapeEnum, MarketMetadata, BidAskData
 
@@ -14,6 +17,8 @@ d) Push it to Kafka
 """
 
 fuzzy_data_con = FuzzyDataConnector()
+producer = KafkaProducer(bootstrap_servers=['localhost:9092'])
+
 def read_ticker_from_config():
     with open("conf/ticker.properties") as conf:
         tickers = conf.readlines()
@@ -23,7 +28,7 @@ def get_latest_quote(tickers):
      for ticker in tickers:
        yield fuzzy_data_con.get_quote_data(ticker)
 
-def generate_mock_quotes_from_initial(initial_quote: MarketQuote, n: int = 100) -> List[MarketQuote]:
+def generate_mock_quotes_from_initial(initial_quote: MarketQuote, n: int = 100):
     """
     Generates `n` MarketQuote objects based on an initial MarketQuote object.
     Values are slightly varied to simulate market fluctuations.
@@ -60,10 +65,17 @@ def generate_mock_quotes_from_initial(initial_quote: MarketQuote, n: int = 100) 
         
         yield quote
 
+def publish_to_kafka(quote:MarketQuote):
+    producer.send(topic='quotes-data', value=quote.model_dump_json().encode('utf-8'))
+
+
 def data_producer_coordinator():
     tickers=read_ticker_from_config()
-    for initial_quote in fuzzy_data_con.get_quote_data(tickers):
-        quote = generate_mock_quotes_from_initial(initial_quote=initial_quote)
+    initial_quote = fuzzy_data_con.get_quote_data(tickers)
+    for quote in generate_mock_quotes_from_initial(initial_quote=initial_quote):
+        publish_to_kafka(quote)
+
+
         
 
 

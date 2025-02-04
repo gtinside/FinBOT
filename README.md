@@ -43,9 +43,48 @@ FinBot is an innovative financial data platform that leverages natural language 
 
 ## Local Setup
 1. Set ```OPENAI_API_KEY``` env variable 
-2. Run timescaledb in a continer ```podman run -d --name market-data-db -p 5432:5432 -e POSTGRES_PASSWORD=password timescale/timescaledb:latest-pg16```
-3. Run Apache Kafka in a container ```podman run -d --name broker apache/kafka:latest```
+2. Run timescaledb in a continer 
+    ```
+        podman run -d --name market-data-db -p 5432:5432 -e POSTGRES_PASSWORD=password timescale/timescaledb:latest-pg16
+    ```
+3. Run Apache Kafka in a container 
+    ```
+    podman run -d -p 9092:9092 --name broker apache/kafka:latest
+    ```
 4. Create a topic in Kafka Broker 
-    -   ```podman exec --workdir /opt/kafka/bin/ -it broker sh```
-    - ```./kafka-topics.sh --bootstrap-server localhost:9092 --create --topic quotes-data```
+    ```
+    a) podman exec --workdir /opt/kafka/bin/ -it broker sh
+
+    b) ./kafka-topics.sh --bootstrap-server localhost:9092 --create --topic quotes-data
+    ```
 5. Start the producer
+6. To listen to Kafka messages
+    ```
+    ./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic quotes-data --from-beginning
+    ```
+7. Connect to timescaledb 
+    ```
+    podman run -it --net=host -e PGPASSWORD=password --rm timescale/timescaledb:latest-pg16 psql -h localhost -U postgres
+    ```
+8. Create a new table 
+    ```
+    CREATE TABLE market_quotes (
+    id SERIAL PRIMARY KEY,
+    event_type TEXT NOT NULL,
+    ticker TEXT NOT NULL,
+    
+    -- Bid data
+    bid_exchange_id INT NOT NULL,
+    bid_price DOUBLE PRECISION NOT NULL,
+    bid_size INT NOT NULL,
+
+    -- Ask data
+    ask_exchange_id INT NOT NULL,
+    ask_price DOUBLE PRECISION NOT NULL,
+    ask_size INT NOT NULL,
+
+    -- Market metadata
+    timestamp BIGINT NOT NULL,
+    sequence_number INT NOT NULL,
+    tape INT NOT NULL CHECK (tape IN (1, 2, 3)) -- Enum constraint for TapeEnum)
+    ```
